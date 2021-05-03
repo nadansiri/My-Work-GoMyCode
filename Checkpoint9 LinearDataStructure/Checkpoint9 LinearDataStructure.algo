@@ -13,7 +13,8 @@ FOR i FROM 0 TO Set1.length-1 STEP 1  DO
 equal:=false;
     FOR j FROM 0 TO Set2.length-1 STEP 1  DO
         IF (Set1[i] = Set2[j]) THEN   //if we find a common element
-            Set2[j]:=0; j--; equal := true; //we change it to 0 in set 2 and change the value of equal to true
+            Set2[j]:=0;  
+            equal := true; //we change it to 0 in set 2 and change the value of equal to true
         END_IF
         IF (equal = true) THEN
             Set1[i]:=0;  //we change the value of the element in set1 to 0 if equal=true
@@ -33,7 +34,7 @@ END
 //Problem1, Solution2
 ALGORITHM sum_distinct_numbers_2
 VAR
-    Set1, Set2 : ARRAY_OF [50];
+    Set1, Set2 : ARRAY_OF INTEGER [50];
     htab: HASH_TABLE<INTEGER,INTEGER>
     i,j,sum,count :INTEGER :=0;
 BEGIN
@@ -42,12 +43,8 @@ BEGIN
 // first we browse the sets to define the count of each character
 //Set1
     FOR i FROM 0 TO Set1.length -1 STEP 1  DO
-       IF (htab.lookup(Set1[i]) = TRUE) THEN
-           count := htab.get(Set1[i]);
-           htab.insert(Set1[i],count+1);
-       ELSE
+           
            htab.insert(Set1[i],1);
-       END_IF
     END_FOR
 //Set2
     FOR i FROM 0 TO Set2.length -1 STEP 1  DO
@@ -126,13 +123,13 @@ BEGIN
 //Set1
    FOR i FROM 0 TO Set1.length -1 STEP 1  DO
        IF (htab.get(Set1[i]) != 1) THEN
-           sum := sum + Set1[i]*2;
+           sum := sum + Set1[i];
        END_IF
    END_FOR
 //Set2
    FOR i FROM 0 TO Set2.length -1 STEP 1  DO
        IF (htab.get(Set2[i]) != 1) THEN
-           sum := sum + Set2[i]*2;
+           sum := sum + Set2[i];
        END_IF
    END_FOR
    Write(" the sum of the overlapping elements is "); Write(sum);

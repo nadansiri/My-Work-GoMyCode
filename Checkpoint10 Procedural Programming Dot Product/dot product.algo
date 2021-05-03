@@ -35,9 +35,7 @@ BEGIN
 END
 //*************************************************** Avec procédure *********************************************************
 //********
-PROCEDURE dot_product(a: ARRAY_OF INTEGER,b: ARRAY_OF INTEGER)
-VAR
-    ps: FLOAT; //Contains the dot(scalar) product of v1 and v2 (vectors of IR)
+PROCEDURE dot_product(a: ARRAY_OF INTEGER,b: ARRAY_OF INTEGER, VAR ps: FLOAT;)//ps Contains the dot(scalar) product of v1 and v2 (vectors of IR)
 BEGIN
     FOR i FROM 0 TO a.length-1 STEP 1  DO
         //dot product of 2 vectors: a = [a1, a2, …, an] and b = [b1, b2, …, bn] is a.b = a1*b1 + a2*b2 +....+ an*bn
@@ -59,7 +57,8 @@ BEGIN
         Write("Composante", i ); Read(V2[i]);
     END_FOR
 //Appel à la procedure
-    IF (dot_product(V1,V2)=0) THEN
+dot_product(V1,V2,ps)
+    IF (ps=0) THEN
         Write("The dot product of the vectors is zero. They are orthogonal.")
     ELSE
         Write("The vectors are not orthogonal.")
