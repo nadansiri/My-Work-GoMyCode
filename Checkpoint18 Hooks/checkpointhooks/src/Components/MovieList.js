@@ -1,13 +1,12 @@
 import React from 'react';
 import MovieCard from './MovieCard';
-import {arr} from "./DataTvMovies";
-
-const MovieList = () => {
+import Arr2 from './MoviesData';
+const MovieList = (Arr) => {
     return (
         <div className="MovieList">
-            {arr.map(el=>MovieCard(el))}
+            {Arr.map((el,key)=>MovieCard(el))}
         </div>
     )
 }
 
-export default MovieList
+export default MovieList;

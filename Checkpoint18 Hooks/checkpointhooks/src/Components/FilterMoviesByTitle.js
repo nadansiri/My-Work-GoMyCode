@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
-import { arr } from "./DataTvMovies";
+import Arr2 from './MoviesData';
 import MovieCard from "./MovieCard";
-import MovieList from "./MovieList";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FormControl, Button } from "react-bootstrap";
 
@@ -13,11 +12,11 @@ const FilterMoviesByTitle = () => {
   const filteredMovieByTitle = () => {
     setTitle(titleRef.current.value);
   };
-  const foundTitle = (arr,str) => {
+  const foundTitle = (Arr2,str) => {
     var aa;
-    aa=arr.findIndex(el=>el.title===str);
-    if(aa==-1) return "Not found"
-    else return MovieCard(arr[aa])
+    aa=Arr2.findIndex(el=>el.title===str);
+    if(aa===-1) return "Not found"
+    else return MovieCard(Arr2[aa])
   }
   
   return (
@@ -36,7 +35,7 @@ const FilterMoviesByTitle = () => {
         </Button>
       </div>
       <div className="found">
-       {foundTitle(arr,title)}
+       {foundTitle(Arr2,title)}
       </div>
     </div>
   );

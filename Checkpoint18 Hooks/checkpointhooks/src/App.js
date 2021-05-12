@@ -1,11 +1,11 @@
 import "./App.css";
-import { arr } from "./Components/DataTvMovies";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import Arr2 from './Components/MoviesData';
 import MovieList from "./Components/MovieList";
 import FilterMoviesByTitle from "./Components/FilterMoviesByTitle";
 import FilterMoviesByRating from "./Components/FilterMoviesByRating";
-import AddNewMovie from "./Components/NewMovie";
+import {MoviesData} from './Components/MoviesData'
 
 function App() {
   return (
@@ -28,14 +28,14 @@ function App() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      <MovieList/>
+      {MovieList(Arr2)}
       <div className="filtered">
       <FilterMoviesByTitle/>
       <FilterMoviesByRating/>
       </div>
       <h3>Would you like to add a new movie to our list?</h3>
       <div className="AddNewMovie">
-        <AddNewMovie/>
+        <MoviesData/>
       </div>
       <footer>
         <h6>Movies @2021</h6>
