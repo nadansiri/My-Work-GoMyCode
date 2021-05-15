@@ -17,6 +17,10 @@
   justify-content: center;
   margin: auto;
 }
+.Toggle{
+  padding: 20px;
+  margin: 20px;
+}
 Button{
   width: 50%;
 }

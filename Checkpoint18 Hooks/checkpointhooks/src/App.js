@@ -1,13 +1,16 @@
+import React, { useState, useRef } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
-import Arr2 from './Components/MoviesData';
+import { Nav, Navbar, NavDropdown,FormControl,Button} from "react-bootstrap";
+import Arr2 from "./Components/MoviesData";
 import MovieList from "./Components/MovieList";
-import FilterMoviesByTitle from "./Components/FilterMoviesByTitle";
-import FilterMoviesByRating from "./Components/FilterMoviesByRating";
-import {MoviesData} from './Components/MoviesData'
+import FilterList from './Components/FilterList';
+import { MoviesData } from "./Components/MoviesData";
 
-function App() {
+class App extends React.Component {
+  state = {Filtering: false};
+render() {
+  const buttonMsg = this.state.Filtering ? "Back to Main":"Search for a movie";
   return (
     <div className="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -17,31 +20,32 @@ function App() {
           <Nav className="mr-auto">
             <NavDropdown title="List" id="collasible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Movies</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                TV
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">TV</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Other
-              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.4">Other</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-      {MovieList(Arr2)}
+      <Button  className="Toggle" variant="dark" onClick={() => this.setState({ Filtering: !this.state.Filtering })}>
+      {buttonMsg}
+        </Button>
+      {//Afficher la liste filtrée si on effectue une recherche
+      this.state.Filtering?
       <div className="filtered">
-      <FilterMoviesByTitle/>
-      <FilterMoviesByRating/>
-      </div>
+      <FilterList/>
+      </div>:MovieList(Arr2)}
+      
       <h3>Would you like to add a new movie to our list?</h3>
       <div className="AddNewMovie">
-        <MoviesData/>
+        <MoviesData />
       </div>
       <footer>
         <h6>Movies @2021</h6>
       </footer>
     </div>
   );
+}
 }
 
 export default App;

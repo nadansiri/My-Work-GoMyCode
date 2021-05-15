@@ -34,7 +34,7 @@ const Arr2 = [
       "Explorer Sir Malcolm Murray, American gunslinger Ethan Chandler, scientist Victor Frankenstein and medium Vanessa Ives unite to combat supernatural threats in Victorian London.",
     posterURL:
       "https://m.media-amazon.com/images/M/MV5BMTQ0Mzg2NzcyNl5BMl5BanBnXkFtZTgwMDE1NzU2NDE@._V1_UY268_CR7,0,182,268_AL_.jpg",
-    rating: "8.5",
+    rating: "8.2",
   },
 ];
 export default Arr2;
