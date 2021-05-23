@@ -1,25 +1,13 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
-import WatchTrailer from "./WatchTrailer";
+//MovieList gets the movies as props from App.js
 
-const MovieList = (Arr) => {
+const MovieList = ({ movie, name, rating }) => {
+
   return (
     <div className="MovieList">
-      {Arr.map((el) => {
-        return (
-            <Router>
-                <div>
-            <Link to={`/${el.title}`}>{el.title}</Link>
-            {MovieCard(el)}
-            <Route path={`/${el.title}`}>
-                <WatchTrailer title={el.title} trailer={el.trailer} description={el.description}/>
-            </Route>
-          </div>
-            </Router>
-          
-        );
-      })}
+      {movie
+      .filter((el)=>el.title.toLowerCase().includes(name.toLowerCase())&& el.rating>=rating)
+      .map(el =><MovieCard movie={el} key={el.id}/>)}
     </div>
   );
 };

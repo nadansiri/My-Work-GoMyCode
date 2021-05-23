@@ -1,30 +1,52 @@
-import React from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Card } from "react-bootstrap";
-import WatchTrailer from "./WatchTrailer";
-//<Card.Title><Link to={`${match.url}/${props.title}`}>{props.title}</Link>
-//<Card.Title>{props.title}</Card.Title>
+import { Card, Modal } from "react-bootstrap";
+import MovieTrailer from "./MovieTrailer";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch,
+} from "react-router-dom";
+
+//Moviecard formats the data of a movie into a neat card
+
 const MovieCard = (props) => {
+  let { path, url } = useRouteMatch();
   return (
-    
-      <div className="MovieCard">
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={props.posterURL} alt="Poster" />
-          <Card.Body>
-            <Card.Title>
-              {props.title}
-            </Card.Title>
-            <Card.Text style={{ height: "15rem" }}>
-              {props.description}
-            </Card.Text>
-          </Card.Body>
-          <Card.Footer>
-            <small className="text-muted">Rating: {props.rating}/10</small>
-          </Card.Footer>
-        </Card>
-        
-      </div>
-    
+    <Router>
+    <div className="MovieCard">
+      <Card style={{ width: "18rem", height: "50rem" }}>
+        <Card.Img
+          variant="top"
+          src={props.movie.posterURL}
+          alt="Poster"
+          style={{ width: "18rem", height: "25rem", textAlign: "center" }}
+        />
+        <Card.Body>
+          <Card.Title className="text-danger">
+            <Link to={`/${props.movie.id}`}>{props.movie.title}</Link>
+          </Card.Title>
+          <hr />
+          <Card.Text className="text-muted">
+            {props.movie.description}
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer style={{ height: "4rem" }}>
+          <div className="cardFooter">
+            <small className="text-muted">
+              IMDB Rating: {props.movie.rating}/10
+            </small>
+            <MovieTrailer
+              title={props.movie.title}
+              trailer={props.movie.trailer}
+              description={props.movie.description}
+            />
+          </div>
+        </Card.Footer>
+      </Card>
+    </div>
+    </Router>
   );
 };
 

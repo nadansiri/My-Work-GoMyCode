@@ -1,7 +1,10 @@
 .App {
   text-align: center;
-  font-family: 'Roboto', sans-serif;
   color: rgb(8, 8, 44);
+}
+.Navbar,
+.Add {
+  font-family: "Montserrat", sans-serif;
 }
 .MovieCard {
   margin: 10px;
@@ -12,53 +15,25 @@
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.found {
-  display: flex;
+footer{
   justify-content: center;
-  margin: auto;
-}
-.Toggle{
-  padding: 20px;
-  margin: 20px;
-}
-Button{
-  width: 50%;
-}
-.ButtonAdd{
-  width: 100%;
-}
-.SearchMovie {
-  display: flex;
-  width:600px;
-}
-.filtered {
-  display: flex;
-  justify-content: space-around;
-  background-color:#f7f7f7;
   padding: 20px;
   margin-top: 20px;
-  margin-bottom: 50px;
+  text-align: center;
 }
-.NewMovieDetails {
-  display: flex;
-  flex-direction: column;
-  justify-content: right;
-  width: 600px;
-}
-.NewMovie {
-  margin: auto;
-  display: flex;
-}
-.CardOfAdded {
-  display: flex;
+.Trailer{
   justify-content: center;
+  text-align: center;}
+.cardFooter{
+  display: flex;
+  justify-content: space-between;
   align-items: center;
+  margin: auto;
 }
-.AddNewMovie{
-  display: flex;
+.About{
+  
+  align-items:start;
   justify-content: center;
-  background-color:#f7f7f7;
-  padding: 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  padding: 80px;
+  margin:100px;
 }

@@ -1,60 +1,77 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Nav, Navbar, NavDropdown} from "react-bootstrap";
-import Arr2 from "./Components/MoviesData";
+import "./App.css";
+import { Nav, Navbar } from "react-bootstrap";
 import MovieList from "./Components/MovieList";
-import FilterList from "./Components/FilterList";
-import { MoviesData } from "./Components/MoviesData";
+import Movies from "./Components/Movies";
+import AddToTheList from "./Components/AddToTheList";
+import SearchMovies from "./Components/SearchMovies";
+import MovieTrailer from "./Components/MovieTrailer";
+import About from "./Components/About";
 
-class App extends React.Component {
-  state = { Filtering: false };
-  render() {
-    return (
-      <Router>
-        <div className="App">
+const App = () => {
+  //useState()
+  const [MovieData, setMovieData] = useState(Movies);
+  const [SearchBy1, setSearchBy1] = useState(""); //for filtering by movie name
+  const [SearchBy2, setSearchBy2] = useState(0); //for filtering by rating using stars
+
+  const filteredMovie1 = (e) => {
+    setSearchBy1(e.target.value);
+  };
+  const filteredMovie2 = (e) => {
+    setSearchBy2(e);
+  };
+
+  const Add = (ob) => {
+    setMovieData([...MovieData, ob]);
+  };
+
+  return (
+    <Router>
+      <div className="App">
+        <div className="Navbar">
           <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="#home">
+            <Navbar.Brand>
               <Link to="/">Home</Link>
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">
-                <NavDropdown title="List" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">
-                    <Link to="/addmovie">Add a movie</Link>
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    <Link to="/filtermovies">Filter Movies</Link>
-                  </NavDropdown.Item>
-                </NavDropdown>
+                <Nav.Link to="/about">
+                  <Link to="/about">About</Link>
+                </Nav.Link>
+                <Nav.Link>
+                  <AddToTheList Add={Add} />
+                </Nav.Link>
+              </Nav>
+              <Nav>
+                <SearchMovies
+                  SearchBy1={filteredMovie1}
+                  SearchBy2={filteredMovie2}
+                />
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-          <Switch>
-            <Route exact path="/">
-              {MovieList(Arr2)}
-            </Route>
-            <Route path="/addmovie">
-              <h3>Would you like to add a new movie to our list?</h3>
-              <div className="AddNewMovie">
-                <MoviesData />
-              </div>
-            </Route>
-            <Route path="/filtermovies">
-              <div className="filtered">
-                <FilterList />
-              </div>
-            </Route>
-          </Switch>
-
-          <footer>
-          <hr />
-            <h6>Movies @2021</h6>
-          </footer>
         </div>
-      </Router>
-    );
-  }
-}
+
+        <Switch>
+          <Route path="/about">
+            <About />
+          </Route>
+          <Route path="/">
+            <MovieList movie={MovieData} name={SearchBy1} rating={SearchBy2} />
+            <AddToTheList Add={Add} />
+          </Route>
+
+        </Switch>
+        <footer>
+          <hr />
+          <h5>Movies @2021</h5>
+          <p>Checkpoint React Router: Movie App</p>
+        </footer>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
