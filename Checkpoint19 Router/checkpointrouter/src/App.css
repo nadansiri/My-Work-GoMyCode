@@ -1,0 +1,64 @@
+.App {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  color: rgb(8, 8, 44);
+}
+.MovieCard {
+  margin: 10px;
+}
+.MovieList {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.found {
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+.Toggle{
+  padding: 20px;
+  margin: 20px;
+}
+Button{
+  width: 50%;
+}
+.ButtonAdd{
+  width: 100%;
+}
+.SearchMovie {
+  display: flex;
+  width:600px;
+}
+.filtered {
+  display: flex;
+  justify-content: space-around;
+  background-color:#f7f7f7;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+.NewMovieDetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  width: 600px;
+}
+.NewMovie {
+  margin: auto;
+  display: flex;
+}
+.CardOfAdded {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.AddNewMovie{
+  display: flex;
+  justify-content: center;
+  background-color:#f7f7f7;
+  padding: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

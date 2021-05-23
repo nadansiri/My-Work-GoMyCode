@@ -1,20 +1,20 @@
-import React from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Card } from "react-bootstrap";
+//Moviecard formats the data of a movie into a neat card 
 
 const MovieCard = (props) => {
   return (
     <div className="MovieCard">
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={props.posterURL} alt="Poster"/>
+      <Card style={{ width: '18rem', height: '50rem'  }}>
+        <Card.Img variant="top" src={props.movie.posterURL} alt="Poster"style={{ height: '25rem' }}/>
         <Card.Body>
-          <Card.Title>{props.title}</Card.Title>
-          <Card.Text style={{ height: '15rem' }} >
-           {props.description}
+          <Card.Title className="text-danger">{props.movie.title}</Card.Title>
+          <hr/>
+          <Card.Text className="text-muted"  style={{ height: '15rem' }}>
+           {props.movie.description}
           </Card.Text>
         </Card.Body>
         <Card.Footer>
-          <small className="text-muted">Rating: {props.rating}/10</small>
+          <small className="text-muted">IMDB Rating: {props.movie.rating}/10</small>
         </Card.Footer>
       </Card>
     </div>
