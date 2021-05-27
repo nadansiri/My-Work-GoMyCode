@@ -10,11 +10,8 @@ import {
 } from "react-router-dom";
 
 //Moviecard formats the data of a movie into a neat card
-
 const MovieCard = (props) => {
-  let { path, url } = useRouteMatch();
   return (
-    <Router>
     <div className="MovieCard">
       <Card style={{ width: "18rem", height: "50rem" }}>
         <Card.Img
@@ -25,7 +22,7 @@ const MovieCard = (props) => {
         />
         <Card.Body>
           <Card.Title className="text-danger">
-            <Link to={`/${props.movie.id}`}>{props.movie.title}</Link>
+            <Link to={`/description/${props.movie.id}`}>{props.movie.title}</Link>
           </Card.Title>
           <hr />
           <Card.Text className="text-muted">
@@ -33,20 +30,13 @@ const MovieCard = (props) => {
           </Card.Text>
         </Card.Body>
         <Card.Footer style={{ height: "4rem" }}>
-          <div className="cardFooter">
             <small className="text-muted">
               IMDB Rating: {props.movie.rating}/10
             </small>
-            <MovieTrailer
-              title={props.movie.title}
-              trailer={props.movie.trailer}
-              description={props.movie.description}
-            />
-          </div>
         </Card.Footer>
       </Card>
+      
     </div>
-    </Router>
   );
 };
 

@@ -1,43 +1,25 @@
-import React, {useState} from "react";
-import { Button, Modal } from "react-bootstrap";
-
+import React from "react";
+import { Card } from "react-bootstrap";
 
 const MovieTrailer = (props) => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
   return (
     <div className="Trailer">
-      <Button variant="btn" onClick={handleShow}>
-        Trailer
-      </Button>
+      <Card className="text-center">
+        <Card.Header>Watch The Trailer For: {props.title}</Card.Header>
+        <Card.Body>
+          <Card.Title>{props.title}</Card.Title>
+          <Card.Text>
+            {props.trailer}
+            <hr />
 
-      <Modal
-      size="xl"
-        show={show}
-        onHide={handleClose}
-        backdrop="static"
-        keyboard={false}
-      >
-        <Modal.Header closeButton>
-          <Modal.Title>{props.title}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-        <div className="Trailer">
-        {props.trailer}
-        <hr/>
-        </div>
-        <h5>Synopsis:</h5>
-        <p>{props.description}</p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
+            <h5>Synopsis:</h5>
+            <p>{props.description}</p>
+          </Card.Text>
+        </Card.Body>
+        <Card.Footer className="text-muted">
+          Rating on IMDB: {props.rating}/10
+        </Card.Footer>
+      </Card>
     </div>
   );
 };

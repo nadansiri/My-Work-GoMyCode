@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch } from "react-router-dom";
 import "./App.css";
 import { Nav, Navbar } from "react-bootstrap";
 import MovieList from "./Components/MovieList";
@@ -58,15 +58,20 @@ const App = () => {
           <Route path="/about">
             <About />
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <MovieList movie={MovieData} name={SearchBy1} rating={SearchBy2} />
-            <AddToTheList Add={Add} />
           </Route>
-
+          {MovieData.map(el=><Route path={`/description/${el.id}`}><MovieTrailer
+              title={el.title}
+              trailer={el.trailer}
+              description={el.description}
+              rating={el.rating}
+            />
+            </Route>)}
         </Switch>
         <footer>
-          <hr />
           <h5>Movies @2021</h5>
+          <hr/>
           <p>Checkpoint React Router: Movie App</p>
         </footer>
       </div>

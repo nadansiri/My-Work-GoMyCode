@@ -28,7 +28,6 @@ const AddToTheList = (props) => {
 
   return (
     <div className="Add">
-      {console.log(NewMovie)}
       <Button variant="dark" onClick={handleShow}>
         Add A New Movie
       </Button>
