@@ -101,7 +101,7 @@ Note: You should return the updated document.
 To do that you need to pass the options document { new: true } 
 as the 3rd argument to findOneAndUpdate(). 
 By default, these methods return the unmodified object. */
-app.get("/person/updates", function (req, res) {
+app.get("/updates", function (req, res) {
   const personName = { name: "nadaazerty" };
   const update = { age: 20 };
   //If you use Model.findOneAndUpdate(), by default you'll see one of the below deprecation warnings.
